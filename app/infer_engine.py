@@ -3,18 +3,33 @@ from pathlib import Path
 import numpy as np
 import torch
 
+from spinvae.data import build
 from spinvae.evaluation.load import ModelLoader
+from spinvae.model import hierarchicalvae
 
 
 class InferEngine:
     def __init__(
-        self, model_path=Path("pretrained_weight"), remain_size=50, remain_rows=16
+        self,
+        model_path=Path("pretrained_weight/decoder_checkpoint.pth"),
+        remain_size=50,
+        remain_rows=16,
     ) -> None:
-        loader = ModelLoader(model_path)
-        loader.ae_model.decoder.eval()
-        self.ae_model = loader.ae_model
+        self.ae_model = self.__load_model(model_path)
         self.remain_idx = np.random.choice(257 * 251, remain_size, replace=False)
         self.remain_rows = remain_rows
+
+    def __load_model(self, model_path: Path) -> hierarchicalvae.HierarchicalVAE:
+        model_config, train_config = ModelLoader.get_model_train_configs(Path(""))
+        dataset = build.get_dataset(model_config, train_config)
+        model_config.dim_z = -1
+        ae_model = hierarchicalvae.HierarchicalVAE(
+            model_config, train_config, dataset.preset_indexes_helper
+        )
+        ae_model.decoder.load_state_dict(torch.load(str(model_path)))
+        ae_model.decoder.eval()
+
+        return ae_model
 
     def __decode(self, z: torch.Tensor) -> torch.Tensor:
         zs = z.unsqueeze(0)
