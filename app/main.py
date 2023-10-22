@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from mangum import Mangum
 from pydantic import BaseModel
 
-from app.infer_engine import InferEngine
+from .infer_engine import InferEngine
 
 infer_engine = InferEngine()
 app = FastAPI()
@@ -13,7 +13,7 @@ class VhAndSigma(BaseModel):
     sigma: list[float]
 
 
-@app.put("/calc_vh_and_sigma")
+@app.post("/calc_vh_and_sigma")
 def calc_vh_and_sigma(z: list[float]) -> VhAndSigma:
     vh, sigma = infer_engine.calc_vh_and_sigma(z)
     return VhAndSigma(vh=vh, sigma=sigma)

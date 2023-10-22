@@ -1,4 +1,4 @@
 [submodule "spinvae"]
-	path = spinvae
+	path = app/spinvae
 	url = https://github.com/OTRAY271/spinvae.git
 	branch = little_fix

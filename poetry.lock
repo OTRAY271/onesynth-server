@@ -341,32 +341,6 @@ files = [
 ]
 
 [[package]]
-name = "dawdreamer"
-version = "0.7.1"
-description = "An audio-processing Python library supporting core DAW features"
-category = "main"
-optional = false
-python-versions = ">=3.7"
-files = [
-    {file = "dawdreamer-0.7.1-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:ba1564d0d1d7486671f59971c060271e8dd7eac3aa879e71d5dbfc4b5986e510"},
-    {file = "dawdreamer-0.7.1-cp310-cp310-macosx_11_0_x86_64.whl", hash = "sha256:0e4310ea77f9b609a18e38c36c8cd931458b8cadf2bc2540a3c83876d4aae98e"},
-    {file = "dawdreamer-0.7.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:4f7e79ded07b59b7cd400ea06f5a3d7164e1b1731ea304892c6924ed80eea6af"},
-    {file = "dawdreamer-0.7.1-cp310-cp310-win_amd64.whl", hash = "sha256:2c446b574a8b6409406ad1d0da97bfa578d14019564153d1260d5595ccb1470c"},
-    {file = "dawdreamer-0.7.1-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:39f5c4cb30bec5d37b8d442da8fcc3133ac3116c0b65c0d1710303462bd50085"},
-    {file = "dawdreamer-0.7.1-cp311-cp311-macosx_11_0_x86_64.whl", hash = "sha256:e9001a179db7b26e31ee3cc6296c0cd9c335ec610ca54873d2d3a9bac5bd7188"},
-    {file = "dawdreamer-0.7.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:d188cb210bebc2bd912e9e1a06fb0225575460c6c4808a2f048e1caf6e3e7b48"},
-    {file = "dawdreamer-0.7.1-cp311-cp311-win_amd64.whl", hash = "sha256:cda27f01726bcadaeb24b0aad09049cd7aeab4a0bf8a56d8cfbee14c6378bd62"},
-    {file = "dawdreamer-0.7.1-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:7b9cebe547d04b65b2e8426fff38b0d0f66468f6ae0289a03c65864bab80ad6f"},
-    {file = "dawdreamer-0.7.1-cp37-cp37m-win_amd64.whl", hash = "sha256:6ed3a9f24aebb86c43ca1ee9f557d1cec24f9e0bfc951ea87eded856e0bb320c"},
-    {file = "dawdreamer-0.7.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:cebf087c3d8760b27d4a745ec42dad5c2eadf74b2d2160c59de41a1195e17ffc"},
-    {file = "dawdreamer-0.7.1-cp38-cp38-win_amd64.whl", hash = "sha256:e4a0acb8e290857708e87e842f949f8e656784ed0a1560d672b1ca1434f40adb"},
-    {file = "dawdreamer-0.7.1-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:1e7dcf18ea6a342296483e71cff80f2c9f722cdf882557110897803e581dd3f9"},
-    {file = "dawdreamer-0.7.1-cp39-cp39-macosx_11_0_x86_64.whl", hash = "sha256:92e8cd989d9ee76c53811e350ac9df801c5d9df6e9d2380b79145b34f35d13a6"},
-    {file = "dawdreamer-0.7.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:56c7a81d305f8a6f4da9e1f13a5704a67d33aac25a724ef045cfe9bbf208e1e3"},
-    {file = "dawdreamer-0.7.1-cp39-cp39-win_amd64.whl", hash = "sha256:742582ba99f845ed631da85215c6ac1379c3c39e6c0b8dbb4ca811dc48671047"},
-]
-
-[[package]]
 name = "decorator"
 version = "5.1.1"
 description = "Decorators for Humans"
@@ -1003,34 +977,6 @@ packaging = ">=20.0"
 pillow = ">=6.2.0"
 pyparsing = ">=2.3.1,<3.1"
 python-dateutil = ">=2.7"
-
-[[package]]
-name = "mido"
-version = "1.3.0"
-description = "MIDI Objects for Python"
-category = "main"
-optional = false
-python-versions = "~=3.7"
-files = [
-    {file = "mido-1.3.0-py3-none-any.whl", hash = "sha256:a710a274c8a1a3fd481f526d174a16e117b5e58d719ad92937a67fb6167a9432"},
-    {file = "mido-1.3.0.tar.gz", hash = "sha256:84282e3ace34bca3f984220db2dbcb98245cfeafb854260c02e000750dca86aa"},
-]
-
-[package.dependencies]
-packaging = ">=23.1,<24.0"
-
-[package.extras]
-build-docs = ["sphinx (>=4.3.2,<4.4.0)", "sphinx-rtd-theme (>=1.2.2,<1.3.0)"]
-check-manifest = ["check-manifest (>=0.49)"]
-dev = ["mido[build-docs]", "mido[check-manifest]", "mido[lint-code]", "mido[lint-reuse]", "mido[release]", "mido[test]"]
-lint-code = ["flake8 (>=5.0.4,<5.1.0)"]
-lint-reuse = ["reuse (>=1.1.2,<1.2.0)"]
-ports-all = ["mido[ports-pygame]", "mido[ports-rtmidi-python]", "mido[ports-rtmidi]"]
-ports-pygame = ["PyGame (>=2.5,<3.0)"]
-ports-rtmidi = ["python-rtmidi (>=1.5.4,<1.6.0)"]
-ports-rtmidi-python = ["rtmidi-python (>=0.2.2,<0.3.0)"]
-release = ["twine (>=4.0.2,<4.1.0)"]
-test-code = ["pytest (>=7.4.0,<7.5.0)"]
 
 [[package]]
 name = "mpmath"
@@ -1701,37 +1647,6 @@ files = [
 
 [package.extras]
 cli = ["click (>=5.0)"]
-
-[[package]]
-name = "python-rtmidi"
-version = "1.5.5"
-description = "A Python binding for the RtMidi C++ library implemented using Cython."
-category = "main"
-optional = false
-python-versions = ">=3.8"
-files = [
-    {file = "python_rtmidi-1.5.5-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:09a3bd3bc30f1f289509a8bff61b2e3505b75fb489bd692514e72a53a7b14fe2"},
-    {file = "python_rtmidi-1.5.5-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:26834d895952d83df921d9fdf758daf6ed1b0a4a48043e91861bd9f461d183be"},
-    {file = "python_rtmidi-1.5.5-cp310-cp310-manylinux_2_28_aarch64.whl", hash = "sha256:aea56cc19142b40961ea3317d1562b948e12291c9a9376b95eb77cb55324dc23"},
-    {file = "python_rtmidi-1.5.5-cp310-cp310-manylinux_2_28_x86_64.whl", hash = "sha256:e5438ccedafbf0d6eddf8d8164947008f1030de34c44c449a8a98d1f66174b1c"},
-    {file = "python_rtmidi-1.5.5-cp310-cp310-win_amd64.whl", hash = "sha256:3ad968b87a7665913d524c9731f00877a23b1e3ae5b040bc4eb3a4c82d548afd"},
-    {file = "python_rtmidi-1.5.5-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:7a7d580ea66b305958df8c6c312c15b02fd256a72ce774fdf14000c611bd3a46"},
-    {file = "python_rtmidi-1.5.5-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:137f301066d02cb95e0434f16b02cc15dd335b5ed908d0d2fe2c9369f84b8398"},
-    {file = "python_rtmidi-1.5.5-cp311-cp311-manylinux_2_28_aarch64.whl", hash = "sha256:30a18f01081cb2b8f9d046576f1fabc18d7c6a77248d0a5e40f31137f140792e"},
-    {file = "python_rtmidi-1.5.5-cp311-cp311-manylinux_2_28_x86_64.whl", hash = "sha256:cc0c4e151423e070162220f27fe85741f8efb0ef99a73af92f9b25296cd3e9de"},
-    {file = "python_rtmidi-1.5.5-cp311-cp311-win_amd64.whl", hash = "sha256:9a1e6dc4a04f19e330f3f798d59ee247b2dcdfa7115d9d588a64e882f8c9187a"},
-    {file = "python_rtmidi-1.5.5-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:d64057900d1530d355f3f41a09e3460d2eb598e1c7e87e947f4ebd015bc90358"},
-    {file = "python_rtmidi-1.5.5-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:0b9559817c66076ca47149b939442a7ba677e152e219d4e76c3a9cce716c8859"},
-    {file = "python_rtmidi-1.5.5-cp38-cp38-manylinux_2_28_aarch64.whl", hash = "sha256:db31012542863ddbacf531a32985576065cc98961c9d80aed064a45d37d930c9"},
-    {file = "python_rtmidi-1.5.5-cp38-cp38-manylinux_2_28_x86_64.whl", hash = "sha256:9cb91a66b2e5eba8dd8657528574e9b2793a6f0ba85442b8ee9a569b5e866470"},
-    {file = "python_rtmidi-1.5.5-cp38-cp38-win_amd64.whl", hash = "sha256:0496c29aad3f8dbdc76b372a7dd14c323bd7a51ea5afe3ca20883a7002ab56a4"},
-    {file = "python_rtmidi-1.5.5-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:cb110b59eb1d7a0f24d1e0d72b00b5b20e47927e231af7c05f0005ffe54918b9"},
-    {file = "python_rtmidi-1.5.5-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:24ad4202be3915a83f2d07f97d4eb3566cf6f629349c99a8eac0fa63330b2273"},
-    {file = "python_rtmidi-1.5.5-cp39-cp39-manylinux_2_28_aarch64.whl", hash = "sha256:dea82f0e4ecc0770773ed2276862a9f34282b49528e3cc2200e6820ea77bdff4"},
-    {file = "python_rtmidi-1.5.5-cp39-cp39-manylinux_2_28_x86_64.whl", hash = "sha256:cfb59345d6f5339405aa7aff58330f24edf21872ba6fb537223e2c37cb536e56"},
-    {file = "python_rtmidi-1.5.5-cp39-cp39-win_amd64.whl", hash = "sha256:8c5d22c8f2fad83a92d1b110b47bac5ab60f945c825b2ba43f707b3c6b648401"},
-    {file = "python_rtmidi-1.5.5.tar.gz", hash = "sha256:3f3e9b0fa497e813cc0bdd73b28ae07977c91803e4d5550bc7c7a34a1501cbde"},
-]
 
 [[package]]
 name = "pytz"
@@ -2493,4 +2408,4 @@ test = ["pytest (>=6.0.0)", "setuptools (>=65)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "c09b5fd8c7e1d765b0319f300b8f40da17ca898e82188d74394b851246939484"
+content-hash = "a59d49a47ac3c2a26877ce7b43ef44acc552a6a74c0de32ca2ce1fbdc244f2b8"
