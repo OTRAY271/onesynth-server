@@ -43,14 +43,13 @@ class InferEngine:
         return torch.flatten(x)[self.remain_idx]
 
     def calc_vh_and_sigma(
-        self, z: list[float]
+        self, z: torch.Tensor
     ) -> tuple[list[list[float]], list[float]]:
-        z_tensor = torch.tensor(z)
-        jacobian = torch.func.jacrev(self.__decode)(z_tensor).detach().numpy()
+        jacobian = torch.func.jacrev(self.__decode)(z).detach().numpy()
         _, sigma, vh = np.linalg.svd(jacobian, full_matrices=True)
         return vh[: self.remain_rows].tolist(), sigma[: self.remain_rows].tolist()
 
-    def calc_prob(self, sigma: list[float]) -> list[float]:
+    def calc_prob(self, sigma: list[float]) -> np.ndarray:
         sigma_np = np.array(sigma)
         sum_sigma = np.sum(sigma_np)
         if sum_sigma != 0:
@@ -66,8 +65,8 @@ class InferEngine:
         params = list(preset2d.to_raw())
         return params
 
-    def turn_around(self, vh: list[list[float]], prob: list[float]) -> list[float]:
-        return vh[np.random.choice(len(prob), size=1, p=prob)[0]]
+    def turn_around(self, vh: list[list[float]], sigma: list[float]) -> list[float]:
+        return vh[np.random.choice(len(sigma), size=1, p=self.calc_prob(sigma))[0]]
 
     def calc_z(
         self, position: float, basis: list[float], center_z: list[float]
