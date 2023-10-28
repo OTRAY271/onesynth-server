@@ -14,25 +14,17 @@ class InferEngine:
 
     def __init__(
         self,
-        model_path=Path("pretrained_weight/decoder_checkpoint.pth"),
+        model_path=Path("pretrained_weight/combin_CEsmooth0.00_beta5.0e-06"),
         remain_size=50,
-        remain_rows=32,
     ) -> None:
         self.ae_model = self.__load_model(model_path)
         self.dataset = build.get_dataset(*ModelLoader.get_model_train_configs(None))
         self.remain_idx = np.random.choice(257 * 251, remain_size, replace=False)
-        self.remain_rows = remain_rows
 
     def __load_model(self, model_path: Path) -> hierarchicalvae.HierarchicalVAE:
-        model_config, train_config = ModelLoader.get_model_train_configs(Path(""))
-        dataset = build.get_dataset(model_config, train_config)
-        model_config.dim_z = -1
-        ae_model = hierarchicalvae.HierarchicalVAE(
-            model_config, train_config, dataset.preset_indexes_helper
-        )
-        ae_model.decoder.load_state_dict(torch.load(str(model_path)))
+        loader = ModelLoader(model_path)
+        ae_model = loader.ae_model
         ae_model.decoder.eval()
-
         return ae_model
 
     def __decode(self, z: torch.Tensor) -> torch.Tensor:
@@ -47,7 +39,7 @@ class InferEngine:
     ) -> tuple[list[list[float]], list[float]]:
         jacobian = torch.func.jacrev(self.__decode)(z).detach().numpy()
         _, sigma, vh = np.linalg.svd(jacobian, full_matrices=True)
-        return vh[: self.remain_rows].tolist(), sigma[: self.remain_rows].tolist()
+        return vh.tolist(), sigma.tolist()
 
     def calc_prob(self, sigma: list[float]) -> np.ndarray:
         sigma_np = np.array(sigma)
